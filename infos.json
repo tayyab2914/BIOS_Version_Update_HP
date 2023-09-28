@@ -1,0 +1,12 @@
+{
+    "displayName" : "Bios Version",
+    "author" : ["Tayyab ur Rehman"],
+    "contributor" : [],
+    "supportedAgent" : ["Windows"],
+    "version" : "2.1",
+    "licence" : "GPLv2",
+    "description" : {
+      "en" : "Check for BIOS Update version"
+    }
+  }
+  
