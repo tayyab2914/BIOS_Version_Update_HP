@@ -10,19 +10,19 @@ catch {
     # URL of the executable file
     $url = "https://hpia.hpcloud.hp.com/downloads/cmsl/hp-cmsl-1.6.10.exe"
     # Path where you want to save the downloaded exe file
-    if (!Test-path $exePath) {
-        
+    if (Test-path $exePath) {
+        # Use Invoke-WebRequest to download the file
+       
     }
     else{
-        # Use Invoke-WebRequest to download the file
-        Invoke-WebRequest -Uri $url -OutFile $exePath
+         Invoke-WebRequest -Uri $url -OutFile $exePath
     }
     # Check if the file exists
     if (Test-Path $exePath) {
         # Use Start-Process to run the executable with arguments
         Start-Process -FilePath $exePath -ArgumentList "/VERYSILENT"
-        Start-Sleep -Seconds 5
     }
+    Start-Sleep -Seconds 5
 }
 try {
     $updates = Get-HPBIOSUpdates -ErrorAction Stop
