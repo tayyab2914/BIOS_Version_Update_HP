@@ -21,6 +21,7 @@ catch {
     if (Test-Path $exePath) {
         # Use Start-Process to run the executable with arguments
         Start-Process -FilePath $exePath -ArgumentList "/VERYSILENT"
+        Start-Sleep -Seconds 5
     }
 }
 try {
@@ -51,7 +52,7 @@ $installed_version = [version]$installed_version
 $installed_date = wmic bios get ReleaseDate
 $installed_date = [regex]::Match($installed_date , '\d{8}')
 $installed_date = [DateTime]::ParseExact($installed_date, "yyyyMMdd", $null)
-if ($latest_version -eq $installed_version -and $latest_date -eq $installed_date) {
+if ($latest_version -le $installed_version) {
     $update_required = $false
 }
 else {
